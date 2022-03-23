@@ -1,0 +1,90 @@
+{% extends 'partials/base.html' %}
+{% block title %}DATA VISUALIZATION{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row mt-4 pt-3">
+    <div class="col-md-4">
+        <div class="border p-3 shadow">
+            <h4> Add Data</h4>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                {{form|crispy }}
+                <input class="btn btn-success btn-block" type="submit" value="Add">
+
+            </form>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <canvas id="myChart" width="400" height="300"></canvas>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [{% for data in data %} '{{data.date}}', {%endfor%}],
+        datasets: [
+          {
+            label: '# of Datavisualization',
+            data: [{% for data in data %} '{{data.close}}', {%endfor%}],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+               
+            borderColor: 'rgba(54, 162, 235, 1)',            
+                
+                
+            borderWidth: 1,
+
+            yAxisID: 'y'
+            
+
+             
+
+
+          },{
+            type: 'line',  
+            label: '# of volume',
+            data: [{% for data in data %} '{{data.volume}}', {%endfor%}],
+            backgroundColor: 'rgba(54, 162, 235, 1)',
+               
+            borderColor: 'rgba(255, 99, 132, 0.2)',            
+                
+                
+            borderWidth: 1,
+
+            yAxisID: 'y1',
+
+          }
+          
+    
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                type: 'linear',
+                position: 'right'
+            }
+            
+            
+        }
+    }
+});
+</script>
+<div class="selectBox" >
+
+  <select id="dropdown">
+      <option>1JANATAMF</option> 
+      <option>1STPRIMFMF</option> 
+      <option>AAMRANET</option> 
+      <option>AAMRANET</option> 
+      <option>ABB1STMF</option> 
+  </select>
+   
+    
+
+</div>
+</div>
+
+{% endblock %}
