@@ -85,6 +85,42 @@ const myChart = new Chart(ctx, {
     
 
 </div>
+
+
+<h1>View the Table</h1>
+<a href=""><button>Fetch and Refresh </button></a>
+ <br>
+ <table>
+     <thead>
+         <tr>
+             
+             <th>
+                 trade_code
+             </th>
+             
+             
+             <th>
+                 close
+             </th>
+
+             <th>
+                 volume
+             </th>
+         </tr>
+     </thead>
+     {%for instance in data%}
+     <tr>
+         <td>{{instance.trade_code}}</td>
+     
+     
+        <td>{{instance.close}}</td>
+    
+    
+        <td>{{instance.volume}}</td>
+    </tr>
+     {% endfor%}
+ </table>
+
 </div>
 
 {% endblock %}
