@@ -1,1 +1,1 @@
-web: gunicorn janata.wsgi --log-file-
+web: gunicorn janata.wsgi --log-file -
