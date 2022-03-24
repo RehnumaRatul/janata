@@ -3,6 +3,14 @@ from django.shortcuts import redirect, render
 from .models import VisualData
 from .forms import VisualDataFrom
 
+
+
+
+#fetching details andsaving in a dictionary
+from django.core import serializers
+text = serializers.serialize("python",VisualData.objects.all())
+
+
 # Create your views here.
 
 
@@ -25,6 +33,7 @@ def index(request):
     context = {
         'data': data,
         'form': form,
+        'text': text,
         
     }
     return render(request, 'visualization/index.html', context)
