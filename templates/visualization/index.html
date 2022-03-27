@@ -12,9 +12,10 @@
                 {% csrf_token %}
                 {{form|crispy }}
                 <input class="btn btn-success btn-block" type="submit" value="Add">
-
+                
             </form>
         </div>
+        
     </div>
     <div class="col-md-8">
         <canvas id="myChart" width="400" height="300"></canvas>
@@ -106,6 +107,14 @@ const myChart = new Chart(ctx, {
              <th>
                  volume
              </th>
+             <th>
+                open
+            </th>
+            <th>
+                high
+            </th>
+            <th>
+                low            </th>
          </tr>
      </thead>
      {%for instance in data%}
@@ -117,6 +126,13 @@ const myChart = new Chart(ctx, {
     
     
         <td>{{instance.volume}}</td>
+        <td>{{instance.open}}</td>
+        <td>{{instance.high}}</td>
+        <td>{{instance.low}}</td>
+        <td>
+            <a href="/edit/{{instance.id}}"><span class="btn btn-success" >Edit</span></a>
+            <a href="/delete/{{instance.id }}" class="btn btn-danger" >Delete</a>
+        </td>
     </tr>
      {% endfor%}
  </table>
