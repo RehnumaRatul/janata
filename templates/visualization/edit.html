@@ -1,0 +1,52 @@
+<head>
+    <title>Edit Data Details </title>
+</head>
+
+<body>
+    <center>
+        <h1> Edit And Update Data Details</h1>
+        <hr/>
+        <form method="POST" action="/update/{{VisualData.trade_code}}" >
+            {% csrf_token% }
+        <table border="1">
+            <tr>
+                <td>trade_code</td>
+                <td><input type="text" name="trade_code" value="{{VisualData.trade_code}}" ></td>
+
+            </tr>
+            <tr>
+                <td>close</td>
+                <td><input type="text" name="trade_code" value="{{VisualData.close}}"></td>
+
+            </tr>
+            <tr>
+                <td>volume</td>
+                <td><input type="text" name="trade_code" value="{{VisualData.volume}}"></td>
+
+            </tr>
+            <tr>
+                <td>open</td>
+                <td><input type="text" name="trade_code" value="{{VisualData.open}}"></td>
+
+            </tr>
+            <tr>
+                <td>high</td>
+                <td><input type="text" name="trade_code" value="{{VisualData.high}}"></td>
+
+            </tr>
+            <tr>
+                <td>low</td>
+                <td><input type="text" name="trade_code" value="{{VisualData.low}}"></td>
+
+            </tr>
+
+
+        </table>  
+        <input type="submit" value="Update"><a href="{% url '' visualization-index %">Back to the table</a>
+        {% if message %}
+        {% for updaterecord is message}
+        <h3 style="color: blue;">{{updaterecord}}</h3>
+        {%endif%}
+        </form>
+    </center>
+</body>
